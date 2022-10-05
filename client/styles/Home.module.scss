@@ -1,0 +1,265 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dataContainer {
+  width: 95vw;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 1rem;
+  th {
+    border: 2px solid black;
+  }
+
+  td {
+    text-align: left;
+    padding: 5px 0;
+    border-bottom: 1px solid #c1c1c1;
+    border-right: 2px solid #c1c1c1;
+  }
+
+  .updtInput {
+    border: none;
+    width: 100%;
+    color: black;
+  }
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+  background-color: #c8c9ca;
+  width: 80%;
+  padding: 10px 5px;
+  border-radius: 20px;
+}
+
+.newexpenses {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 20px;
+}
+
+.input {
+  width: 25vw;
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.newtitle,
+.newtime,
+.newamount,
+.newdate {
+  margin: 2% 0;
+}
+
+.btnaddexpense {
+  margin-left: 43%;
+}
+
+.button {
+  background-color: white;
+  font-size: 25px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.button:hover {
+  animation: gradient 0.25s forwards;
+}
+
+@keyframes gradient {
+  0% {
+    background: radial-gradient(
+      circle at center,
+      coral 0%,
+      dodgerblue 0%,
+      dodgerblue 100%
+    );
+  }
+  25% {
+    background: radial-gradient(
+      circle at center,
+      coral 24%,
+      dodgerblue 25%,
+      dodgerblue 100%
+    );
+  }
+  50% {
+    background: radial-gradient(
+      circle at center,
+      coral 49%,
+      dodgerblue 50%,
+      dodgerblue 100%
+    );
+  }
+  75% {
+    background: radial-gradient(
+      circle at center,
+      coral 74%,
+      dodgerblue 75%,
+      dodgerblue 100%
+    );
+  }
+  100% {
+    color: dodgerblue;
+    background: radial-gradient(
+      circle at center,
+      coral 99%,
+      coral 100%,
+      coral 100%
+    );
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .btnaddexpense {
+    margin-left: 40%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .btnaddexpense {
+    margin-right: 30%;
+    margin-left: 35%;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .btnaddexpense {
+    margin-left: 33%;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .newexpenses {
+    flex-flow: column;
+    justify-content: center;
+  }
+
+  .btnaddexpense {
+    margin-left: 3%;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .btnaddexpense {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .button {
+    padding: 5px 10px;
+    font-size: 20px;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background: radial-gradient(
+      circle at center,
+      coral 0%,
+      #3d9862 0%,
+      #3d9862 100%
+    );
+  }
+  25% {
+    background: radial-gradient(
+      circle at center,
+      coral 24%,
+      #3d9862 25%,
+      #3d9862 100%
+    );
+  }
+  50% {
+    background: radial-gradient(
+      circle at center,
+      coral 49%,
+      #3d9862 50%,
+      #3d9862 100%
+    );
+  }
+  75% {
+    background: radial-gradient(
+      circle at center,
+      coral 74%,
+      #3d9862 75%,
+      #3d9862 100%
+    );
+  }
+  100% {
+    color: #3d9862;
+    background: radial-gradient(
+      circle at center,
+      coral 99%,
+      coral 100%,
+      coral 100%
+    );
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .input {
+    margin: 15px 5px;
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .input {
+    margin: 15px 1px;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  .input {
+    padding-top: 0;
+    flex: 0;
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .input {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 345px) {
+  .title {
+    margin-left: 0;
+  }
+}
+
+.expenseform {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 625px) {
+  .rows {
+    padding: 0;
+    margin: 5px 0.5% 5px 0.5%;
+    width: 98%;
+  }
+}

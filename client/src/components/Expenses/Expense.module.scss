@@ -1,0 +1,210 @@
+.expenseitems {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  // border: none;
+  border: 1px solid red;
+  border-radius: 20px;
+}
+
+.expenseamount {
+  background-color: #3d9862;
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.expensedate {
+  background-color: #3d9862;
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.title {
+  padding: 5px 15px;
+  border-radius: 20px;
+  margin: 0 15px;
+}
+
+@keyframes gradient {
+  0% {
+    background: radial-gradient(
+      circle at center,
+      coral 0%,
+      #3d9862 0%,
+      #3d9862 100%
+    );
+  }
+  25% {
+    background: radial-gradient(
+      circle at center,
+      coral 24%,
+      #3d9862 25%,
+      #3d9862 100%
+    );
+  }
+  50% {
+    background: radial-gradient(
+      circle at center,
+      coral 49%,
+      #3d9862 50%,
+      #3d9862 100%
+    );
+  }
+  75% {
+    background: radial-gradient(
+      circle at center,
+      coral 74%,
+      #3d9862 75%,
+      #3d9862 100%
+    );
+  }
+  100% {
+    color: #3d9862;
+    background: radial-gradient(
+      circle at center,
+      coral 99%,
+      coral 100%,
+      coral 100%
+    );
+  }
+}
+
+.rows {
+  box-shadow: 3px 5px 6px black;
+  background-color: #c8c9ca;
+  border-radius: 20px;
+  margin: 2% 5%;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 965px) {
+  .expenseitems {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 725px) {
+  .expenseitems {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .expenseitems {
+    padding: 5px;
+    margin: 15px 5px;
+    font-weight: normal;
+  }
+  .expenseamount {
+    margin: 15px 5px;
+    padding: 5px;
+  }
+  .expensedate {
+    margin: 15px 5px;
+    padding: 5px;
+  }
+  .title {
+    margin: 15px 5px;
+    padding: 5px;
+    font-size: 15px;
+  }
+  .input {
+    margin: 15px 5px;
+    padding: 5px;
+  }
+  #btn {
+    margin: 15px 5px;
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .expenseitems {
+    margin: 15px 1px;
+  }
+  .expenseamount {
+    margin: 15px 1px;
+  }
+  .expensedate {
+    margin: 15px 1px;
+  }
+  .title {
+    margin: 15px 1px;
+  }
+  .input {
+    margin: 15px 1px;
+  }
+  #btn {
+    margin: 15px 1px;
+  }
+}
+
+@media screen and (max-width: 485px) {
+  #btn {
+    padding-top: 0;
+    flex: 0.3;
+    padding-bottom: 0;
+  }
+  .input {
+    padding-top: 0;
+    flex: 0;
+    padding-bottom: 0;
+  }
+  .title {
+    padding-top: 0;
+    padding-bottom: 0;
+    flex: 0.3;
+  }
+  .expensedate {
+    padding-top: 0;
+    flex: 0;
+    padding-bottom: 0;
+  }
+  .expenseamount {
+    padding-top: 0;
+    padding-bottom: 0;
+    flex: 0;
+  }
+  .expenseitems {
+    padding: 0;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #btn {
+    font-size: 10px;
+  }
+  .input {
+    font-size: 10px;
+  }
+  .title {
+    font-size: 12px;
+    border-radius: 10px;
+  }
+  .expensedate {
+    font-size: 15px;
+    margin-left: 5px;
+  }
+  .expenseamount {
+    font-size: 15px;
+    margin-right: 5px;
+  }
+  .expenseitems {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 345px) {
+  .title {
+    margin-left: 0;
+  }
+  .expenseamount {
+    margin-right: 0;
+  }
+}
