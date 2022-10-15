@@ -26,21 +26,20 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const getData = () => {
-    setInterval(() => setLoading(true), 3000);
-    Axios.get("http://localhost:3001/getExpenses").then((response) => {
-      const rev = response.data.reverse();
-      setListOfExpenses(rev);
-    });
+    setInterval(() => {
+      setLoading(true);
+      Axios.get("http://localhost:3001/getExpenses").then((response) => {
+        const rev = response.data.reverse();
+        setListOfExpenses(rev);
+      });
+    }, 4000);
 
     setLoading(false);
   };
 
-  // const handleUpdate = (id) => {
-  //   Axios.put("http://localhost:3001/update", {
-  //     id: id,
-  //     newName: newName,
-  //   });
-  // };
+  const handleUpdate = (id) => {
+    Axios.put(`http://localhost:3001/update/${id}`);
+  };
 
   const validate = (event) => {
     let title = document.getElementById("title");
@@ -176,13 +175,7 @@ export default function Home() {
         </form>
       </div>
       {loading ? (
-        (listOfExpense.length <= 0 && (
-          <div className={stl.error}>
-            <h1>No data in the DataBase...</h1>
-            <h2>Please add some...</h2>
-          </div>
-        )) ||
-        (listOfExpense.length != 0 && (
+        listOfExpense.length != 0 && (
           <div>
             <table className={stl.dataContainer}>
               <thead>
@@ -210,10 +203,16 @@ export default function Home() {
                           handleDelete(item._id);
                           setLoading(true);
                           setHandleEffect(generateRandomString(5));
-                          setLoading(false);
                         }}
                       >
                         Delete
+                      </button>
+                      <button
+                        onClick={() => {
+                          handleUpdate(_id);
+                        }}
+                      >
+                        Update
                       </button>
                     </td>
                   </tr>
@@ -221,7 +220,7 @@ export default function Home() {
               </tbody>
             </table>
           </div>
-        ))
+        )
       ) : (
         <LoadingScreen />
       )}

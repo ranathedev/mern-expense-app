@@ -30,19 +30,14 @@ app.post("/addExpense", async (req, res) => {
   res.json();
 });
 
-app.put("/update", async (req, res) => {
-  const newTitle = req.body.newTitle;
-  const id = req.body.id;
+app.put("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  const newTitle = "Updated Title";
 
-  try {
-    await UserModel.findById(id, (err, updatedTitle) => {
-      updatedTitle.title = newTitle;
-      updatedName.save();
-
-      res.json();
-    });
-  } catch {}
-});
+  await UserModel.findByIdAndUpdate(id,{title: newTitle},(err, doc) => {
+if(err) return console.log(err);
+res.json(doc)
+)}});
 
 app.delete("/delete/:id", async (req, res) => {
   const id = req.params.id;
