@@ -24,6 +24,9 @@ export default function Home() {
   const [enteredTime, setEnteredTime] = useState("");
   const [handleEffect, setHandleEffect] = useState("");
   const [loading, setLoading] = useState(false);
+  const [newTitle, setNewTitle] = useState("");
+  const [defVal, setDefVal] = useState("");
+  const [id, setId] = useState("");
 
   const getData = () => {
     setInterval(() => {
@@ -38,7 +41,10 @@ export default function Home() {
   };
 
   const handleUpdate = (id) => {
-    Axios.put(`http://localhost:3001/update/${id}`);
+    Axios.put(`http://localhost:3001/update/${id}`, { newTitle });
+
+    setInterval(setLoading(true), 3000);
+    setLoading(false);
   };
 
   const validate = (event) => {
@@ -84,21 +90,19 @@ export default function Home() {
           ...listOfExpense,
         ]);
       });
-
+      getData();
       setEnteredTitle("");
-      setEnteredAmount("");
+      setEnteredAmount(0);
       setEnteredDate("");
       setEnteredTime("");
-      setListOfExpenses([newExpenseData, ...listOfExpense]);
     } else {
       event.preventDefault();
     }
   };
 
   const handleDelete = (id) => {
-    Axios.delete(`http://localhost:3001/delete/${id}`);
+    Axios.delete(`http://localhost:3001/delete/${id}`).then(getData());
   };
-
   const titleHandler = (event) => {
     setEnteredTitle(event.target.value);
   };
@@ -115,6 +119,22 @@ export default function Home() {
   useEffect(() => {
     getData();
   }, [handleEffect]);
+
+  const disableButton = () => {
+    const btn = document.getElementsByClassName("btnCommon");
+    var i;
+    for (i = 0; i < btn.length; i++) {
+      btn[i].disabled = true;
+    }
+  };
+
+  const enableButton = () => {
+    const btn = document.getElementsByTagName("button");
+    var i;
+    for (i = 0; i < btn.length; i++) {
+      btn[i].disabled = false;
+    }
+  };
 
   return (
     <div className={stl.container}>
@@ -174,6 +194,23 @@ export default function Home() {
           </div>
         </form>
       </div>
+      <div id="update" className={stl.updateTitle}>
+        <input
+          id="updateInput"
+          onFocus={(e) => e.target.select()}
+          placeholder={defVal}
+          onChange={(e) => setNewTitle(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleUpdate(id);
+              document.getElementById("update").style.visibility = "hidden";
+              enableButton();
+              e.target.value = "";
+            }
+          }}
+          defaultValue=""
+        />
+      </div>
       {loading ? (
         listOfExpense.length != 0 && (
           <div>
@@ -203,13 +240,23 @@ export default function Home() {
                           handleDelete(item._id);
                           setLoading(true);
                           setHandleEffect(generateRandomString(5));
+                          document.getElementById("update").style.visibility =
+                            "hidden";
+                          enableButton();
+                          document.getElementById("updateInput").value = "";
                         }}
                       >
                         Delete
                       </button>
                       <button
+                        id="updateBtn"
+                        className="btnCommon"
                         onClick={() => {
-                          handleUpdate(_id);
+                          setDefVal(item.title);
+                          setId(item._id);
+                          const input = document.getElementById("update");
+                          input.style.visibility = "visible";
+                          disableButton();
                         }}
                       >
                         Update

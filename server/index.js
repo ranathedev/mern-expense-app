@@ -30,14 +30,18 @@ app.post("/addExpense", async (req, res) => {
   res.json();
 });
 
-app.put("/update/:id", async (req, res) => {
+app.put("/update/:id", (req, res) => {
   const id = req.params.id;
-  const newTitle = "Updated Title";
+  const newTitle = req.body.newTitle;
 
-  await UserModel.findByIdAndUpdate(id,{title: newTitle},(err, doc) => {
-if(err) return console.log(err);
-res.json(doc)
-)}});
+  UserModel.findByIdAndUpdate(id, { title: newTitle }, (err, doc) => {
+    if (err) {
+      return console.log(err);
+    } else {
+      res.json(doc);
+    }
+  });
+});
 
 app.delete("/delete/:id", async (req, res) => {
   const id = req.params.id;
